@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_hub/components/pizza_customize_page.dart';
 
 class ClassicPizzaPage extends StatefulWidget {
   const ClassicPizzaPage({super.key});
@@ -27,7 +28,7 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   appBar(),
-                  item(),
+                  pizzaList()
                 ],
               ),
             ),
@@ -45,7 +46,7 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
             body: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [item()],
+                children: [pizzaList()],
               ),
             ),
           );
@@ -216,238 +217,26 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
     );
   }
 
-  Widget item() {
-    return FittedBox(
-      fit: BoxFit.scaleDown,
-      child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (width > 750) {
-            return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.black54,
-              ),
-              width: width * 0.8,
-              height: height * 0.5,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.black87,
-                          ),
-                          width: width * 0.4,
-                          height: height * 0.5),
-                    ),
-                    Flexible(
-                      flex: 3,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text(
-                                "Rich tomato sauce base topped with cream cheese, onions, green chillies & Mozzarella."),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              IconButton(
-                                color: Colors.orange,
-                                onPressed: decrementCount,
-                                icon: const Icon(Icons.remove),
-                              ),
-                              Text(
-                                count.toString(),
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              IconButton(
-                                color: Colors.orange,
-                                onPressed: incrementCount,
-                                icon: const Icon(Icons.add),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              buildPizzaSizeButton("Small"),
-                              buildPizzaSizeButton("Medium"),
-                              buildPizzaSizeButton("Large"),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              ElevatedButton(
-                                onPressed: null,
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "lib/assets/Icons/cheese.png",
-                                      width: 25,
-                                      height: 25,
-                                    ),
-                                    const Text("Extra Cheese ")
-                                  ],
-                                ),
-                              ),
-                              ElevatedButton(
-                                onPressed: null,
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "lib/assets/Icons/meat.png",
-                                      width: 25,
-                                      height: 25,
-                                    ),
-                                    const Text("Extra Meat")
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          ElevatedButton(
-                            onPressed: null,
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  "lib/assets/Icons/add-to-cart.png",
-                                  width: 25,
-                                  height: 25,
-                                ),
-                                const Text("Add To Cart")
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          } else {
-            return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.black54,
-              ),
-              width: width * 0.8,
-              height: height * 0.7,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.black87,
-                          ),
-                          width: width * 0.7,
-                          height: height * 0.5),
-                    ),
-                    Flexible(
-                      flex: 3,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text(
-                                "Rich tomato sauce base topped with cream cheese, onions, green chillies & Mozzarella."),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              IconButton(
-                                color: Colors.orange,
-                                onPressed: decrementCount,
-                                icon: const Icon(Icons.remove),
-                              ),
-                              Text(
-                                count.toString(),
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              IconButton(
-                                color: Colors.orange,
-                                onPressed: incrementCount,
-                                icon: const Icon(Icons.add),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              buildPizzaSizeButton("Small"),
-                              buildPizzaSizeButton("Medium"),
-                              buildPizzaSizeButton("Large"),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              ElevatedButton(
-                                onPressed: null,
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "lib/assets/Icons/cheese.png",
-                                      width: 25,
-                                      height: 25,
-                                    ),
-                                    const Text("Extra Cheese ")
-                                  ],
-                                ),
-                              ),
-                              ElevatedButton(
-                                onPressed: null,
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "lib/assets/Icons/meat.png",
-                                      width: 25,
-                                      height: 25,
-                                    ),
-                                    const Text("Extra Meat")
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          ElevatedButton(
-                            onPressed: null,
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  "lib/assets/Icons/add-to-cart.png",
-                                  width: 25,
-                                  height: 25,
-                                ),
-                                const Text("Add To Cart")
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }
-        },
-      ),
+  Widget pizzaList() {
+    return Column(
+      children: [
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella"
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella"
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella"
+        ),
+      ],
     );
   }
 
-  void incrementCount() {
+  /*void incrementCount() {
     setState(() {
       count++;
     });
@@ -482,5 +271,5 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
         ],
       ),
     );
-  }
+  }*/
 }
