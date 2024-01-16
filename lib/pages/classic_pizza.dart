@@ -218,20 +218,25 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
   }
 
   Widget pizzaList() {
-    return Column(
+    return const Column(
       children: [
         PizzaCustomizePage(
             pizzaImagePath: "lib/assets/pizza_homePage.png",
-            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella"
+            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella", 
+            pizzaName: 'Pizza', 
+            pizzaPrice: '\$4.00', 
+            spizzaPrice: "\$2.00", 
+            mpizzaPrice: "\$4.00", 
+            lpizzaPrice: "\$6.00",
+        ),
+        /*PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella", pizzaName: '', pizzaPrice: '',
         ),
         PizzaCustomizePage(
             pizzaImagePath: "lib/assets/pizza_homePage.png",
-            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella"
-        ),
-        PizzaCustomizePage(
-            pizzaImagePath: "lib/assets/pizza_homePage.png",
-            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella"
-        ),
+            pizzaDescription:"Made with a flavourful combination of Chicken Ham, Spicy Chicken & Roast Chicken complemented with cream cheese, raisins, onions & mozzarella", pizzaName: '', pizzaPrice: '',
+        ),*/
       ],
     );
   }
