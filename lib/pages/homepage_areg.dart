@@ -1,21 +1,26 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pizza_hub/components/pizza_tile.dart';
+import 'package:pizza_hub/components/signup.dart';
 import 'package:pizza_hub/pages/classic_pizza.dart';
 import 'package:pizza_hub/pages/signature_pizza.dart';
 import 'package:pizza_hub/pages/supreme_pizza.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AfterHomePage extends StatefulWidget {
+  const AfterHomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AfterHomePage> createState() => _AfterHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AfterHomePageState extends State<AfterHomePage> {
   late double width;
   late double height;
+  late String userName;
   @override
   Widget build(BuildContext context) {
+    User? user = FirebaseAuth.instance.currentUser;
+    userName = user?.displayName ?? 'User';
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return LayoutBuilder(
@@ -28,6 +33,7 @@ class _HomePageState extends State<HomePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text("Welcome $userName"),
                     appBar(),
                     welcomeMessage(),
                     menu(),
@@ -40,7 +46,10 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: const Text("PizzaHub",style: TextStyle(color: Colors.white,fontSize: 18),),
+              title: const Text(
+                "PizzaHub",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
             ),
             drawer: drawer(),
             body: ListView(
@@ -87,7 +96,32 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        /*showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Dialog(
+                              child: SizedBox(
+                                width: 400, // Set the width
+                                height: 440,
+                                child: AlertDialog(
+                                  contentPadding: const EdgeInsets.all(5),
+                                  content: const SignUp(),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        // Close the dialog
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('Close'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );*/
+                      },
                       child: const Text(
                         'Order Now',
                         style: TextStyle(color: Colors.white),
@@ -111,7 +145,7 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         } else {
-          return Drawer();
+          return const Drawer();
         }
       },
     );
