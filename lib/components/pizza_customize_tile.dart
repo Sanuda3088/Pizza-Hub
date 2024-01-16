@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:pizza_hub/components/pizza_toppings.dart';
+import 'package:pizza_hub/components/pizza_toppings_tile.dart';
 
 class PizzaCustomizePage extends StatefulWidget {
   final String pizzaName;
@@ -8,8 +8,6 @@ class PizzaCustomizePage extends StatefulWidget {
   final String spizzaPrice;
   final String mpizzaPrice;
   final String lpizzaPrice;
-  final String meatPrice = '1.48';
-  final String cheesePrice = '\$0.99';
   final String pizzaImagePath;
   final String pizzaDescription;
   const PizzaCustomizePage(
@@ -33,9 +31,6 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
   String selectedPrice = '';
   int count = 1;
   double totalPrice = 0.0;
-  bool isExtraCheeseSelected = false;
-  bool isExtraMeatSelected = false;
-
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
@@ -85,6 +80,18 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  buildPizzaSizeButton(
+                                      "Small", widget.spizzaPrice),
+                                  buildPizzaSizeButton(
+                                      "Medium", widget.mpizzaPrice),
+                                  buildPizzaSizeButton(
+                                      "Large", widget.lpizzaPrice),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
                                   IconButton(
                                     color: Colors.orange,
                                     onPressed: decrementCount,
@@ -101,76 +108,12 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                   ),
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  buildPizzaSizeButton(
-                                      "Small", widget.spizzaPrice),
-                                  buildPizzaSizeButton(
-                                      "Medium", widget.mpizzaPrice),
-                                  buildPizzaSizeButton(
-                                      "Large", widget.lpizzaPrice),
-                                ],
-                              ),
-                              /*Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        toggleExtraCheese();
-                                      });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: isExtraCheeseSelected
-                                          ? Colors.orange
-                                          : null,
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "lib/assets/Icons/cheese.png",
-                                          width: 25,
-                                          height: 25,
-                                        ),
-                                        const Text("Extra Cheese"),
-                                        Text(widget.cheesePrice)
-                                      ],
-                                    ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        toggleExtraMeat();
-                                      });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: isExtraMeatSelected
-                                          ? Colors.orange
-                                          : null,
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "lib/assets/Icons/meat.png",
-                                          width: 25,
-                                          height: 25,
-                                        ),
-                                        const Text("Extra Meat"),
-                                        Text(widget.meatPrice)
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),*/
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: const Color.fromARGB(255, 38, 38, 38),
                                 ),
-                                width: width * 0.24,
+                                width: width * 0.3,
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -178,7 +121,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8),
                                       child: Text(
-                                        selectedPrice, // Display the selected price here
+                                        'Total: \$${totalPrice.toStringAsFixed(2)}', // Display the selected price here
                                         style: const TextStyle(
                                             color: Colors.white),
                                       ),
@@ -190,11 +133,13 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                           MaterialPageRoute<void>(
                                             builder: (BuildContext context) =>
                                                 PizzaToppingsPage(
-                                                    pizzaImagePath:
-                                                        widget.pizzaImagePath,
-                                                    pizzaName: widget.pizzaName,
-                                                    pizzaDescription: widget
-                                                        .pizzaDescription),
+                                              pizzaImagePath:
+                                                  widget.pizzaImagePath,
+                                              pizzaName: widget.pizzaName,
+                                              pizzaDescription:
+                                                  widget.pizzaDescription,
+                                              pizzaPrice: totalPrice, pizzaCount: count,
+                                            ),
                                           ),
                                         );
                                       },
@@ -220,7 +165,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                   ),
                 );
               } else {
-                return Container(/*
+                return Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.black54,
@@ -257,6 +202,18 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  buildPizzaSizeButton(
+                                      "Small", widget.spizzaPrice),
+                                  buildPizzaSizeButton(
+                                      "Medium", widget.mpizzaPrice),
+                                  buildPizzaSizeButton(
+                                      "Large", widget.lpizzaPrice),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
                                   IconButton(
                                     color: Colors.orange,
                                     onPressed: decrementCount,
@@ -273,60 +230,52 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                   ),
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  buildPizzaSizeButton(
-                                      "Small", widget.spizzaPrice),
-                                  buildPizzaSizeButton(
-                                      "Medium", widget.mpizzaPrice),
-                                  buildPizzaSizeButton(
-                                      "Large", widget.lpizzaPrice),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: null,
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "lib/assets/Icons/cheese.png",
-                                          width: 25,
-                                          height: 25,
-                                        ),
-                                        const Text("Extra Cheese ")
-                                      ],
-                                    ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: null,
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "lib/assets/Icons/meat.png",
-                                          width: 25,
-                                          height: 25,
-                                        ),
-                                        const Text("Extra Meat")
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              ElevatedButton(
-                                onPressed: null,
-                                child: Column(
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: const Color.fromARGB(255, 38, 38, 38),
+                                ),
+                                width: width * 0.45,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Image.asset(
-                                      "lib/assets/Icons/add-to-cart.png",
-                                      width: 25,
-                                      height: 25,
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: Text(
+                                        'Total: \$${totalPrice.toStringAsFixed(2)}', // Display the selected price here
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      ),
                                     ),
-                                    const Text("Add To Cart")
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute<void>(
+                                            builder: (BuildContext context) =>
+                                                PizzaToppingsPage(
+                                              pizzaImagePath:
+                                                  widget.pizzaImagePath,
+                                              pizzaName: widget.pizzaName,
+                                              pizzaDescription:
+                                                  widget.pizzaDescription,
+                                              pizzaPrice: totalPrice, pizzaCount: count,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            "lib/assets/Icons/add-to-cart.png",
+                                            width: 25,
+                                            height: 25,
+                                          ),
+                                          const Text("Customize")
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -336,7 +285,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                       ],
                     ),
                   ),
-                */);
+                );
               }
             },
           ),
@@ -344,50 +293,29 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
       ),
     );
   }
-/*
-  void toggleExtraCheese() {
-    if (isExtraCheeseSelected) {
-      // Subtract the extra cheese price from the total
-      totalPrice -= double.parse(widget.cheesePrice.substring(1));
-    } else {
-      // Add the extra cheese price to the total
-      totalPrice += double.parse(widget.cheesePrice.substring(1));
-    }
-    // Toggle the selection
-    isExtraCheeseSelected = !isExtraCheeseSelected;
-    // Update the selected price
-    updateSelectedPrice();
-  }
 
-  void toggleExtraMeat() {
-    if (isExtraMeatSelected) {
-      // Subtract the extra meat price from the total
-      totalPrice -= double.parse(widget.meatPrice.substring(1));
-    } else {
-      // Add the extra meat price to the total
-      totalPrice += double.parse(widget.meatPrice.substring(1));
-    }
-    // Toggle the selection
-    isExtraMeatSelected = !isExtraMeatSelected;
-    // Update the selected price
-    updateSelectedPrice();
-  }
-
-  void updateSelectedPrice() {
+  void updateTotalPrice() {
     setState(() {
-      selectedPrice =
-          (double.parse(widget.pizzaPrice.substring(1)) + totalPrice)
-              .toStringAsFixed(2);
+      if (selectedPrice == 0) {
+        totalPrice = 0;
+      } else {
+        totalPrice = count * double.parse(selectedPrice.substring(1));
+      }
     });
-  }*/
+  }
+
+  void updateSelectedSizeAndPrice(String size, String price) {
+    setState(() {
+      selectedSize = size;
+      selectedPrice = price;
+      updateTotalPrice();
+    });
+  }
 
   Widget buildPizzaSizeButton(String size, String price) {
     return ElevatedButton(
       onPressed: () {
-        setState(() {
-          selectedSize = size;
-          selectedPrice = price;
-        });
+        updateSelectedSizeAndPrice(size, price);
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: selectedSize == size
@@ -412,6 +340,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
   void incrementCount() {
     setState(() {
       count++;
+      updateTotalPrice();
     });
   }
 
@@ -419,6 +348,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
     setState(() {
       if (count > 1) {
         count--;
+        updateTotalPrice();
       }
     });
   }

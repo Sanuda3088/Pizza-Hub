@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_hub/components/pizza_customize_page.dart';
+import 'package:pizza_hub/components/pizza_customize_tile.dart';
 
 class ClassicPizzaPage extends StatefulWidget {
   const ClassicPizzaPage({super.key});
@@ -240,41 +240,4 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
       ],
     );
   }
-
-  /*void incrementCount() {
-    setState(() {
-      count++;
-    });
-  }
-
-  void decrementCount() {
-    setState(() {
-      if (count > 1) {
-        count--;
-      }
-    });
-  }
-
-  Widget buildPizzaSizeButton(String size) {
-    return ElevatedButton(
-      onPressed: () {
-        setState(() {
-          selectedSize = size;
-        });
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: selectedSize == size
-            ? Colors.orange
-            : null, // Change color based on selection
-      ),
-      child: Column(
-        children: [
-          Text(
-            size,
-            style: TextStyle(color: Colors.white),
-          ),
-        ],
-      ),
-    );
-  }*/
 }
