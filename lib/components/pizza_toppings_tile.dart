@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pizza_hub/pages/cart_page.dart';
 
 class PizzaToppingsPage extends StatefulWidget {
   final String pizzaImagePath;
@@ -189,7 +192,7 @@ class _PizzaToppingsPageState extends State<PizzaToppingsPage> {
                               ),
                             ),
                             ElevatedButton(
-                              onPressed: null,
+                              onPressed: placeOrder,
                               child: Column(
                                 children: [
                                   Image.asset(
@@ -257,7 +260,14 @@ class _PizzaToppingsPageState extends State<PizzaToppingsPage> {
                     ),
                     IconButton(
                       icon: const Icon(Icons.shopping_cart),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => CartPage(),
+                ),
+              );
+                      },
                     ),
                   ],
                 )
@@ -341,12 +351,12 @@ class _PizzaToppingsPageState extends State<PizzaToppingsPage> {
               ),
             ),
             onTap: () {
-              /*Navigator.push(
-              context as BuildContext,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const UserHomePage(),
-              ),
-            );*/
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => CartPage(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -375,7 +385,48 @@ class _PizzaToppingsPageState extends State<PizzaToppingsPage> {
       ),
     );
   }
+  
 
+  void placeOrder() {
+    final CollectionReference orders =
+        FirebaseFirestore.instance.collection('Orders');
+    DateTime now = DateTime.now();
+    User? user = FirebaseAuth.instance.currentUser;
+    String uid = user!.uid;
+    String formattedTotalPrice = totalPrice.toStringAsFixed(2);
+    orders.add({
+      'PizzaName': widget.pizzaName,
+      'PizzaPrice': formattedTotalPrice,
+      'PizzaCount': count,
+      'PizzaImagePath': widget.pizzaImagePath,
+      'OrderDate': now,
+      'UID': uid, 
+    }).then((_) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Order Placed'),
+          content: const Text('Your order has been placed successfully.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => CartPage(),
+                ),
+              );
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }).catchError((error) {
+      print('Error placing order: $error');
+    });
+  }
 
   void toggleExtraCheese() {
     setState(() {
@@ -406,4 +457,6 @@ class _PizzaToppingsPageState extends State<PizzaToppingsPage> {
       isExtraMeatSelected = !isExtraMeatSelected;
     });
   }
+
+
 }

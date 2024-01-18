@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pizza_hub/components/pizza_tile.dart';
 import 'package:pizza_hub/components/signup.dart';
+import 'package:pizza_hub/controllers/auth.dart';
+import 'package:pizza_hub/pages/cart_page.dart';
 import 'package:pizza_hub/pages/classic_pizza.dart';
+import 'package:pizza_hub/pages/homepage_breg.dart';
 import 'package:pizza_hub/pages/signature_pizza.dart';
 import 'package:pizza_hub/pages/supreme_pizza.dart';
 
@@ -137,7 +140,14 @@ class _AfterHomePageState extends State<AfterHomePage> {
                     ),
                     IconButton(
                       icon: const Icon(Icons.shopping_cart),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => CartPage(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 )
@@ -227,7 +237,14 @@ class _AfterHomePageState extends State<AfterHomePage> {
                 fontSize: 16,
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => CartPage(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(
@@ -270,6 +287,28 @@ class _AfterHomePageState extends State<AfterHomePage> {
                 builder: (BuildContext context) => const AdminLoginPage(),
               ),
             );*/
+            },
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.admin_panel_settings,
+              color: Color.fromARGB(255, 238, 207, 52),
+            ),
+            title: const Text(
+              "Log Out",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            onTap: () async {
+              Auth auth = Auth();
+              await auth.signOut();
+              // ignore: use_build_context_synchronously
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
             },
           ),
         ],

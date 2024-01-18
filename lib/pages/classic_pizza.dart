@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_hub/components/pizza_customize_tile.dart';
+import 'package:pizza_hub/pages/cart_page.dart';
 
 class ClassicPizzaPage extends StatefulWidget {
   const ClassicPizzaPage({super.key});
@@ -98,7 +99,14 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
                     ),
                     IconButton(
                       icon: const Icon(Icons.shopping_cart),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => CartPage(),
+                ),
+              );
+                      },
                     ),
                   ],
                 )
@@ -182,12 +190,12 @@ class _ClassicPizzaPageState extends State<ClassicPizzaPage> {
               ),
             ),
             onTap: () {
-              /*Navigator.push(
-              context as BuildContext,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const UserHomePage(),
-              ),
-            );*/
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => CartPage(),
+                ),
+              );
             },
           ),
           ListTile(
