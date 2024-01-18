@@ -65,84 +65,87 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget appBar() {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        if (width > 750) {
-          return AppBar(
-            title: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                const Text('Pizza Hub'),
-                Row(
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Home',
-                        style: TextStyle(color: Colors.white),
+    return DefaultTabController(
+      length:2,
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (width > 750) {
+            return AppBar(
+              title: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text('Pizza Hub'),
+                  Row(
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Home',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'About Us',
-                        style: TextStyle(color: Colors.white),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'About Us',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Dialog(
-                              child: Container(
-                                width: 400, // Set the width
-                                height: 440,
-                                child: AlertDialog(
-                                  contentPadding: const EdgeInsets.all(5),
-                                  content: const SignUp(),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        // Close the dialog
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('Close'),
-                                    ),
-                                  ],
+                      TextButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Dialog(
+                                child: SizedBox(
+                                  width: 400, // Set the width
+                                  height: 440,
+                                  child: AlertDialog(
+                                    contentPadding: const EdgeInsets.all(5),
+                                    content: const SignUp(),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          // Close the dialog
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Close'),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                      child: const Text(
-                        'Order Now',
-                        style: TextStyle(color: Colors.white),
+                              );
+                            },
+                          );
+                        },
+                        child: const Text(
+                          'Order Now',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.person),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.shopping_cart),
-                      onPressed: () {},
-                    ),
-                  ],
-                )
-              ],
-            ),
-          );
-        } else {
-          return const Drawer();
-        }
-      },
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.person),
+                        onPressed: () {},
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.shopping_cart),
+                        onPressed: () {},
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            );
+          } else {
+            return const Drawer();
+          }
+        },
+      ),
     );
   }
 
