@@ -29,7 +29,7 @@ class PizzaTile extends StatelessWidget {
         ),
         child: Column(
           children: [
-            // Coffee image
+            // Pizza image
             GestureDetector(
               onTap: () {
                 onImageTap(context);
@@ -40,7 +40,7 @@ class PizzaTile extends StatelessWidget {
               ),
             ),
 
-            // Coffee name
+            // Pizza name
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
@@ -60,7 +60,7 @@ class PizzaTile extends StatelessWidget {
               ),
             ),
 
-            // Coffee price
+            // Pizza price
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
@@ -106,18 +106,19 @@ class PizzaTileHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, bottom: 5.0),
       child: Container(
         padding: const EdgeInsets.all(16),
-        width: 200,
+        width: width * 0.3,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Colors.black54,
         ),
         child: Column(
           children: [
-            // Coffee image
+            // Pizza image
             GestureDetector(
               onTap: () {
                 onImageTap(context);
@@ -128,7 +129,7 @@ class PizzaTileHome extends StatelessWidget {
               ),
             ),
 
-            // Coffee name
+            // Pizza name
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),

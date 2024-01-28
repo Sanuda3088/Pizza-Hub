@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pizza_hub/controllers/firebase_options.dart';
-import 'package:pizza_hub/controllers/widgettree.dart';
+import 'package:pizza_hub/pages/homepage_breg.dart';
+
 
 
 void main() async {
@@ -20,7 +21,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(colorScheme: const ColorScheme.dark()),
-        home: const WidgetTree());
+        theme: ThemeData(
+          colorScheme: const ColorScheme.dark(),
+          textTheme: const TextTheme(
+            bodyLarge: TextStyle(color: Colors.orange),
+        bodyMedium: TextStyle(color: Colors.orange),
+        displayLarge: TextStyle(color: Colors.orange),
+        displayMedium: TextStyle(color: Colors.orange),
+        displaySmall: TextStyle(color: Colors.orange),
+        headlineMedium: TextStyle(color: Colors.orange),
+        headlineSmall: TextStyle(color: Colors.orange),
+        titleLarge: TextStyle(color: Colors.orange),
+        titleMedium: TextStyle(color: Colors.orange),
+        titleSmall: TextStyle(color: Colors.orange),
+        bodySmall: TextStyle(color: Colors.orange),
+        labelLarge: TextStyle(color: Colors.orange),
+        labelSmall: TextStyle(color: Colors.orange),
+          ),
+        ),  
+        home: const HomePage());
   }
 }

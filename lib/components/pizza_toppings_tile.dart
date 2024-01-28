@@ -388,10 +388,30 @@ class _PizzaToppingsPageState extends State<PizzaToppingsPage> {
   
 
   void placeOrder() {
-    final CollectionReference orders =
+    User? user = FirebaseAuth.instance.currentUser;
+    if(user == null){
+      showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Login Required'),
+          content: Text('Please log in to place an order.'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Login'),
+              onPressed: () {
+                // Navigate to login page
+                Navigator.of(context).pushNamed('/login');
+              },
+            ),
+          ],
+        );
+      },
+    );
+    }else{
+      final CollectionReference orders =
         FirebaseFirestore.instance.collection('Orders');
     DateTime now = DateTime.now();
-    User? user = FirebaseAuth.instance.currentUser;
     String uid = user!.uid;
     String formattedTotalPrice = totalPrice.toStringAsFixed(2);
     orders.add({
@@ -426,6 +446,7 @@ class _PizzaToppingsPageState extends State<PizzaToppingsPage> {
     }).catchError((error) {
       print('Error placing order: $error');
     });
+    }
   }
 
   void toggleExtraCheese() {

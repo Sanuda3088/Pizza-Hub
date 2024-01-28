@@ -41,6 +41,8 @@ dependencies:
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
   intl: ^0.19.0
+  scaled_list: ^2.0.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +73,11 @@ flutter:
     - lib/assets/Icons/meat.png
     - lib/assets/Icons/add-to-cart.png
     - lib/assets/Icons/pizza.png
+    - lib/assets/p1.png
+    - lib/assets/p2.png
+    - lib/assets/p3.png
+    - lib/assets/p4.png
+    - lib/assets/p5.png
 
 
 

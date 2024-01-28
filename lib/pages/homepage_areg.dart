@@ -8,6 +8,7 @@ import 'package:pizza_hub/pages/classic_pizza.dart';
 import 'package:pizza_hub/pages/homepage_breg.dart';
 import 'package:pizza_hub/pages/signature_pizza.dart';
 import 'package:pizza_hub/pages/supreme_pizza.dart';
+import 'package:pizza_hub/pages/test.dart';
 
 class AfterHomePage extends StatefulWidget {
   const AfterHomePage({super.key});
@@ -36,8 +37,8 @@ class _AfterHomePageState extends State<AfterHomePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Welcome $userName"),
                     appBar(),
+                    Text("Welcome $userName"),
                     welcomeMessage(),
                     menu(),
                   ],
@@ -77,6 +78,7 @@ class _AfterHomePageState extends State<AfterHomePage> {
       builder: (BuildContext context, BoxConstraints constraints) {
         if (width > 750) {
           return AppBar(
+            backgroundColor: Colors.black38,
             title: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -322,9 +324,9 @@ class _AfterHomePageState extends State<AfterHomePage> {
         if (width > 750) {
           return Container(
             constraints: BoxConstraints(minHeight: height * 0.9),
-            width: width * 0.9,
+            width: width,
             //height: height*0.9,
-            child: Column(
+            child: myCarousel()/*Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -391,7 +393,7 @@ class _AfterHomePageState extends State<AfterHomePage> {
                   ],
                 ),
               ],
-            ),
+            ),*/
           );
         } else {
           return Container(
@@ -476,106 +478,105 @@ class _AfterHomePageState extends State<AfterHomePage> {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (width > 750) {
-          return SizedBox(
-            height: height * 0.5,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PizzaTileHome(
-                  pizzaImagePath: "lib/assets/pizza_homePage.png",
-                  pizzaName: "Classic",
-                  onImageTap: (BuildContext) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (context) => const ClassicPizzaPage(),
-                      ),
-                    );
-                  },
-                ),
-                PizzaTileHome(
-                  pizzaImagePath: "lib/assets/pizza_homePage.png",
-                  pizzaName: "Signature",
-                  onImageTap: (BuildContext) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (context) => const SignaturePizzaPage(),
-                      ),
-                    );
-                  },
-                ),
-                PizzaTileHome(
-                  pizzaImagePath: "lib/assets/pizza_homePage.png",
-                  pizzaName: "Supreme",
-                  onImageTap: (BuildContext) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (context) => const SupremePizzaPage(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+          return Padding(
+            padding: const EdgeInsets.only(top: 40,bottom: 40),
+            child: SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PizzaTileHome(
+                    pizzaImagePath: "lib/assets/pizza_homePage.png",
+                    pizzaName: "Classic",
+                    onImageTap: (BuildContext) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) => const ClassicPizzaPage(),
+                        ),
+                      );
+                    },
+                  ),
+                  PizzaTileHome(
+                    pizzaImagePath: "lib/assets/pizza_homePage.png",
+                    pizzaName: "Signature",
+                    onImageTap: (BuildContext) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) => const SignaturePizzaPage(),
+                        ),
+                      );
+                    },
+                  ),
+                  PizzaTileHome(
+                    pizzaImagePath: "lib/assets/pizza_homePage.png",
+                    pizzaName: "Supreme",
+                    onImageTap: (BuildContext) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) => const SupremePizzaPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           );
         } else {
-          return SizedBox(
-            height: height * 0.5,
-            child: Row(
-              children: [
-                Expanded(
-                  child: SizedBox(
-                    height: height * 0.5,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        PizzaTileHome(
-                          pizzaImagePath: "lib/assets/pizza_homePage.png",
-                          pizzaName: "Classic",
-                          onImageTap: (BuildContext) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute<void>(
-                                builder: (context) => const ClassicPizzaPage(),
-                              ),
-                            );
-                          },
-                        ),
-                        PizzaTileHome(
-                          pizzaImagePath: "lib/assets/pizza_homePage.png",
-                          pizzaName: "Signature",
-                          onImageTap: (BuildContext) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute<void>(
-                                builder: (context) =>
-                                    const SignaturePizzaPage(),
-                              ),
-                            );
-                          },
-                        ),
-                        PizzaTileHome(
-                          pizzaImagePath: "lib/assets/pizza_homePage.png",
-                          pizzaName: "Supreme",
-                          onImageTap: (BuildContext) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute<void>(
-                                builder: (context) => const SupremePizzaPage(),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+          return Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  height: height * 0.8,
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      PizzaTileHome(
+                        pizzaImagePath: "lib/assets/pizza_homePage.png",
+                        pizzaName: "Classic",
+                        onImageTap: (BuildContext) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (context) => const ClassicPizzaPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      PizzaTileHome(
+                        pizzaImagePath: "lib/assets/pizza_homePage.png",
+                        pizzaName: "Signature",
+                        onImageTap: (BuildContext) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (context) =>
+                                  const SignaturePizzaPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      PizzaTileHome(
+                        pizzaImagePath: "lib/assets/pizza_homePage.png",
+                        pizzaName: "Supreme",
+                        onImageTap: (BuildContext) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (context) => const SupremePizzaPage(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           );
-        }
+       }
       },
     );
   }
