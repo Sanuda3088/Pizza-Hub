@@ -61,32 +61,7 @@ class _SignaturePizzaPageState extends State<SignaturePizzaPage> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Text('Pizza Hub'),
-                Row(
-                  children: [
-                    TextButton(
-                      onPressed: ()=> const HomePage(),
-                      child: const Text(
-                        'Home',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'About Us',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    /*TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Order Now',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),*/
-                  ],
-                ),
+                const Text('Signature Collection', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
                 Row(
                   children: [
                     IconButton(

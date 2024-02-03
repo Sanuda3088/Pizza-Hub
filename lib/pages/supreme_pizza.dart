@@ -63,32 +63,7 @@ class _SupremePizzaPageState extends State<SupremePizzaPage> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Text('Pizza Hub'),
-                Row(
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Home',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'About Us',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    /*TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Order Now',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),*/
-                  ],
-                ),
+                const Text('Supreme Collection', style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
                 Row(
                   children: [
                     IconButton(

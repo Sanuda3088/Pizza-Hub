@@ -71,7 +71,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(widget.pizzaName),
+                              Text(widget.pizzaName,style: const TextStyle(color: Colors.orange,fontSize: 20,fontWeight: FontWeight.bold),),
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(widget.pizzaDescription),
@@ -123,7 +123,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                       child: Text(
                                         'Total: \$${totalPrice.toStringAsFixed(2)}', // Display the selected price here
                                         style: const TextStyle(
-                                            color: Colors.white),
+                                            color: Colors.orange),
                                       ),
                                     ),
                                     ElevatedButton(
@@ -193,7 +193,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(widget.pizzaName),
+                              Text(widget.pizzaName,style: const TextStyle(color: Colors.orange,fontSize: 20,fontWeight: FontWeight.bold)),
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(widget.pizzaDescription),
@@ -245,7 +245,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                       child: Text(
                                         'Total: \$${totalPrice.toStringAsFixed(2)}', // Display the selected price here
                                         style: const TextStyle(
-                                            color: Colors.white),
+                                            color: Colors.orange),
                                       ),
                                     ),
                                     ElevatedButton(
@@ -272,7 +272,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                             width: 25,
                                             height: 25,
                                           ),
-                                          const Text("Customize")
+                                          const Text("Customize", style: TextStyle(color: Colors.orange),)
                                         ],
                                       ),
                                     ),

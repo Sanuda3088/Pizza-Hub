@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pizza_hub/controllers/firebase_options.dart';
 import 'package:pizza_hub/controllers/widgettree.dart';
 
-
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -26,17 +23,17 @@ class MyApp extends StatelessWidget {
           colorScheme: const ColorScheme.dark(),
           textTheme: const TextTheme(
             //bodyLarge: TextStyle(color: Colors.orange),
-        //bodyMedium: TextStyle(color: Colors.orange),
-        //displayLarge: TextStyle(color: Colors.orange),
-        //displayMedium: TextStyle(color: Colors.orange),
-        //displaySmall: TextStyle(color: Colors.orange),
-        //headlineMedium: TextStyle(color: Colors.orange),
-        //headlineSmall: TextStyle(color: Colors.orange),
-        titleLarge: TextStyle(color: Colors.orange),
-        titleMedium: TextStyle(color: Colors.orange),
-        titleSmall: TextStyle(color: Colors.orange),
+            //bodyMedium: TextStyle(color: Colors.orange),
+            //displayLarge: TextStyle(color: Colors.orange),
+            //displayMedium: TextStyle(color: Colors.orange),
+            //displaySmall: TextStyle(color: Colors.orange),
+            //headlineMedium: TextStyle(color: Colors.orange),
+            //headlineSmall: TextStyle(color: Colors.orange),
+            titleLarge: TextStyle(color: Colors.orange),
+            titleMedium: TextStyle(color: Colors.orange),
+            titleSmall: TextStyle(color: Colors.orange),
+          ),
         ),
-        ),  
         home: const WidgetTree());
   }
 }

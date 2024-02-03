@@ -528,7 +528,7 @@ class _AfterHomePageState extends State<AfterHomePage> {
             children: [
               Expanded(
                 child: SizedBox(
-                  height: height * 0.8,
+                  height: height * 0.5,
                   child: ListView(
                     scrollDirection: Axis.vertical,
                     children: [
