@@ -135,15 +135,11 @@ class PizzaTileHome extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     pizzaName,
                     style: const TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(height: 5),
-                  const Text(
-                    'With Almond Milk',
-                    style: TextStyle(fontSize: 15),
                   ),
                 ],
               ),

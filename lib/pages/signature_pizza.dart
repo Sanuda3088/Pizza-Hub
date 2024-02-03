@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_hub/components/pizza_customize_tile.dart';
+import 'package:pizza_hub/pages/homepage_breg.dart';
 
 class SignaturePizzaPage extends StatefulWidget {
   const SignaturePizzaPage({super.key});
@@ -24,6 +26,7 @@ class _SignaturePizzaPageState extends State<SignaturePizzaPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   appBar(),
+                  pizzaList()
                 ],
               ),
             ),
@@ -38,7 +41,9 @@ class _SignaturePizzaPageState extends State<SignaturePizzaPage> {
             body: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [],
+                children: [
+                  pizzaList()
+                ],
               ),
             ),
           );
@@ -60,7 +65,7 @@ class _SignaturePizzaPageState extends State<SignaturePizzaPage> {
                 Row(
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: ()=> const HomePage(),
                       child: const Text(
                         'Home',
                         style: TextStyle(color: Colors.white),
@@ -208,6 +213,75 @@ class _SignaturePizzaPageState extends State<SignaturePizzaPage> {
       ),
     );
   }
-
+  
+  Widget pizzaList() {
+    return const Column(
+      children: [
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"Spicy veggie masala & paneer accompanied with pineapple, topped with double layer of cheese", 
+            pizzaName: 'Spicy Veggie with Paneer', 
+            pizzaPrice: '\$4.99', 
+            spizzaPrice: "\$2.99", 
+            mpizzaPrice: "\$4.99", 
+            lpizzaPrice: "\$6.99",
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"A succulent fusion of Creamy Cuttlefish & Prawns combined with Devilled Prawns, green chillies & onion, topped with delicious mozzarella", 
+            pizzaName: 'Seafood Treat', 
+            pizzaPrice: '\$4.99', 
+            spizzaPrice: "\$2.99", 
+            mpizzaPrice: "\$4.99", 
+            lpizzaPrice: "\$6.99",
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"Devilled chicken in spicy sauce with a double layer of cheese.", 
+            pizzaName: 'Devilled Chicken', 
+            pizzaPrice: '\$4.99', 
+            spizzaPrice: "\$2.99", 
+            mpizzaPrice: "\$4.99", 
+            lpizzaPrice: "\$6.99",
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"BBQ chicken accompanied by spicy jalapenos, onions and a double layer of cheese.", 
+            pizzaName: 'BBQ Chicken', 
+            pizzaPrice: '\$4.99', 
+            spizzaPrice: "\$2.99", 
+            mpizzaPrice: "\$4.99", 
+            lpizzaPrice: "\$6.99",
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"Chicken ham & pineapple with a double layer of cheese", 
+            pizzaName: 'Chicken Hawaian', 
+            pizzaPrice: '\$4.99', 
+            spizzaPrice: "\$2.99", 
+            mpizzaPrice: "\$4.99", 
+            lpizzaPrice: "\$6.99",
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"The ever famous Butter Masala Chicken together with a layer of cream cheese, fresh onions, coriander, ginger and garlic, blanketed with a layer of mozzarella cheese.", 
+            pizzaName: 'Butter Chicken Masala', 
+            pizzaPrice: '\$4.99', 
+            spizzaPrice: "\$2.99", 
+            mpizzaPrice: "\$4.99", 
+            lpizzaPrice: "\$6.99",
+        ),
+        PizzaCustomizePage(
+            pizzaImagePath: "lib/assets/pizza_homePage.png",
+            pizzaDescription:"A combination of kotchchi chicken sausage meat and spicy chicken with crunchy onions and jalapenos placed on a layer of cream cheese and a layer of mozzarella.", 
+            pizzaName: 'Double Chicken & Cheese Fiesta', 
+            pizzaPrice: '\$4.99', 
+            spizzaPrice: "\$2.99", 
+            mpizzaPrice: "\$4.99", 
+            lpizzaPrice: "\$6.99",
+        ),
+      ],
+    );
+  }
 
 }

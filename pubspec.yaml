@@ -78,6 +78,8 @@ flutter:
     - lib/assets/p3.png
     - lib/assets/p4.png
     - lib/assets/p5.png
+    - lib/assets/signature.png
+    - lib/assets/poster.png
 
 
 

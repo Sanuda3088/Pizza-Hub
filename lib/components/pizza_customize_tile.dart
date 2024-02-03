@@ -150,7 +150,7 @@ class _PizzaCustomizePageState extends State<PizzaCustomizePage> {
                                             width: 25,
                                             height: 25,
                                           ),
-                                          const Text("Customize")
+                                          const Text("Customize",style: TextStyle(color: Colors.orange),)
                                         ],
                                       ),
                                     ),

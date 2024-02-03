@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pizza_hub/components/pizza_tile.dart';
-import 'package:pizza_hub/components/signup.dart';
 import 'package:pizza_hub/controllers/auth.dart';
 import 'package:pizza_hub/pages/cart_page.dart';
 import 'package:pizza_hub/pages/classic_pizza.dart';

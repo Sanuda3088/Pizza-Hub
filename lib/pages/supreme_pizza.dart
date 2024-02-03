@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_hub/components/pizza_customize_tile.dart';
 
 class SupremePizzaPage extends StatefulWidget {
   const SupremePizzaPage({super.key});
@@ -24,6 +25,7 @@ class _SupremePizzaPageState extends State<SupremePizzaPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   appBar(),
+                  pizzaList()
                 ],
               ),
             ),
@@ -32,14 +34,18 @@ class _SupremePizzaPageState extends State<SupremePizzaPage> {
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: const Text("Supreme Pizza",style: TextStyle(color: Colors.white,fontSize: 18),),
-
+              title: const Text(
+                "Supreme Pizza",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
             ),
             drawer: drawer(),
             body: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [],
+                children: [
+                  pizzaList()
+                ],
               ),
             ),
           );
@@ -207,6 +213,42 @@ class _SupremePizzaPageState extends State<SupremePizzaPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget pizzaList() {
+    return const Column(
+      children: [
+        PizzaCustomizePage(
+          pizzaImagePath: "lib/assets/pizza_homePage.png",
+          pizzaDescription:
+              "A combination of BBQ chicken, chicken bacon, chicken sausage & an all new roast chicken, accompanied with the freshest green pepper, mushroom, onion and green chilli, blanketed with delicious mozzarella cheese,",
+          pizzaName: 'The Ultimate Chicken Treat',
+          pizzaPrice: '\$5.99',
+          spizzaPrice: "\$3.99",
+          mpizzaPrice: "\$5.99",
+          lpizzaPrice: "\$7.99",
+        ),
+        PizzaCustomizePage(
+          pizzaImagePath: "lib/assets/pizza_homePage.png",
+          pizzaDescription:
+              "Roast chicken, chicken bacon, chicken sausage, beef pepperoni, pineapple, bell pepper, mushroom, onion and olive with a double layer of mozzarella cheese",
+          pizzaName: 'Super Supreme',
+          pizzaPrice: '\$5.99',
+          spizzaPrice: "\$3.99",
+          mpizzaPrice: "\$5.99",
+          lpizzaPrice: "\$7.99",
+        ),
+        PizzaCustomizePage(
+          pizzaImagePath: "lib/assets/pizza_homePage.png",
+          pizzaDescription: "Spicy prawns, hot garlic sauce, onions, peppers and tomatoes with a double layer of mozzarella cheese.",
+          pizzaName: 'Hot Garlic Prawns',
+          pizzaPrice: '\$5.99',
+          spizzaPrice: "\$3.99",
+          mpizzaPrice: "\$5.99",
+          lpizzaPrice: "\$7.99",
+        ),
+      ],
     );
   }
 }
